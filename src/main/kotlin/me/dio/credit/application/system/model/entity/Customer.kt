@@ -1,6 +1,7 @@
 package me.dio.credit.application.system.model.entity
 
 import jakarta.persistence.*
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "Customer")
@@ -18,6 +19,9 @@ data class Customer(
     var email: String = "",
 
     @Column(nullable = false)
+    var income: BigDecimal = BigDecimal.ZERO,
+
+    @Column(nullable = false)
     var password: String = "",
 
     @Column(nullable = false)
@@ -25,7 +29,7 @@ data class Customer(
     var address: Address = Address(),
 
     @Column(nullable = false)
-    @OneToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.REMOVE, CascadeType.PERSIST), mappedBy = "customer")
+    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE, CascadeType.PERSIST], mappedBy = "customer")
     var credits: List<Credit> = mutableListOf(),
 
     @Id
