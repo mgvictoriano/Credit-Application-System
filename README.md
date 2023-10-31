@@ -29,8 +29,8 @@ Before you get started, make sure you have the following prerequisites:
 
 You can interact with the system through the following endpoints:
 
-- /api/credit - Endpoints related to credits.
-- /api/customer - Endpoints related to customers.
+- /api/credit - Endpoints related to credits
+- /api/customer - Endpoints related to customers
 
 ## Dependencies
 The project's dependencies are managed using Gradle and can be found in the build.gradle.kts file:
