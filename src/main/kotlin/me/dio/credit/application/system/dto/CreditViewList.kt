@@ -7,13 +7,15 @@ import java.util.*
 data class CreditViewList(
     val creditCode: UUID,
     val creditValue: BigDecimal,
-    val numberOfInstallments: Int
+    val numberOfInstallments: Int,
+    val status: String
 ) {
 
     constructor(credit: Credit) : this(
         creditCode = credit.creditCode,
         creditValue = credit.creditValue,
-        numberOfInstallments = credit.numberOfInstallments
+        numberOfInstallments = credit.numberOfInstallments,
+        status = credit.status.name
     )
 
 }

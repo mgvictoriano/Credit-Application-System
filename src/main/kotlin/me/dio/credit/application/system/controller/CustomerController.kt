@@ -1,5 +1,6 @@
 package me.dio.credit.application.system.controller
 
+import jakarta.validation.Valid
 import me.dio.credit.application.system.dto.CustomerDTO
 import me.dio.credit.application.system.dto.CustomerUpdateDTO
 import me.dio.credit.application.system.dto.CustomerView
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 class CustomerController(private val customerService: CustomerService) {
 
     @PostMapping
-    fun saveCustomer(@RequestBody customerDTO: CustomerDTO): ResponseEntity<String> {
+    fun saveCustomer(@RequestBody @Valid customerDTO: CustomerDTO): ResponseEntity<String> {
         this.customerService.save(customerDTO.toEntity())
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Customer $customerDTO saved")
@@ -38,6 +39,5 @@ class CustomerController(private val customerService: CustomerService) {
 
     @DeleteMapping("/{id}")
     fun deleteById(@PathVariable(value = "id") id: Long) = this.customerService.delete(id)
-
 
 }
